@@ -1,0 +1,4 @@
+PyQt6>=6.4.0
+PyQt6-QScintilla>=2.13.0
+Pygments>=2.14.0
+PyInstaller>=5.8.0
