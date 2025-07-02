@@ -1,4 +1,5 @@
-from PyQt6.QtWidgets import QMainWindow, QStackedWidget
+from PyQt6.QtGui import QFont
+from PyQt6.QtWidgets import QMainWindow, QStackedWidget, QHBoxLayout, QLabel, QPushButton
 from PyQt6.QtCore import Qt
 from .menu_window import MenuWindow
 from .visualizer_window import VisualizerWindow
@@ -37,7 +38,14 @@ class MainWindow(QMainWindow):
 
     def show_visualizer(self):
         """Показать визуализатор"""
-        self.stacked_widget.setCurrentWidget(self.visualizer_window)
+        try:
+            from .visualizer_window import VisualizerWindow
+            if not hasattr(self, 'visualizer_window'):
+                self.visualizer_window = VisualizerWindow(self)
+                self.stacked_widget.addWidget(self.visualizer_window)
+            self.stacked_widget.setCurrentWidget(self.visualizer_window)
+        except Exception as e:
+            print(f"ERROR при открытии визуализатора: {e}")
 
     def show_tasks(self):
         """Показать окно заданий"""
@@ -75,3 +83,82 @@ class MainWindow(QMainWindow):
                     self.visualizer_window.code_editor.setText(template)
                     break
 
+    def show_tasks(self):
+        """Показать окно заданий"""
+        from .tasks_window import TasksWindow
+        self.tasks_window = TasksWindow(self)
+
+        # ДОБАВЬ ЭТУ СТРОКУ:
+        self.tasks_window.task_selected.connect(self.on_task_selected)
+
+        self.stacked_widget.addWidget(self.tasks_window)
+        self.stacked_widget.setCurrentWidget(self.tasks_window)
+
+    def on_task_selected(self, theme: str, task_name: str, description: str):
+        """Обработчик выбора задания"""
+        print(f"DEBUG: Выбрана задача - {theme}: {task_name}")
+
+        # Создаем или получаем окно визуализатора
+        if not hasattr(self, 'visualizer_window'):
+            from .visualizer_window import VisualizerWindow
+            self.visualizer_window = VisualizerWindow(self)
+            self.stacked_widget.addWidget(self.visualizer_window)
+
+        # Устанавливаем описание задачи
+        self.visualizer_window.set_task_description(theme, task_name, description)
+
+        # Переключаемся на визуализатор
+        self.stacked_widget.setCurrentWidget(self.visualizer_window)
+
+    def create_header(self, layout):
+        """Создание заголовка"""
+        header_layout = QHBoxLayout()
+
+        # Заголовок
+        title = QLabel("CodeVisualizer")
+        title.setFont(QFont("Arial", 24, QFont.Weight.Bold))
+        title.setStyleSheet("color: #2c3e50; margin: 20px 0;")
+        header_layout.addWidget(title)
+
+        # Растягиваем пространство
+        header_layout.addStretch()
+
+        # Кнопка сброса всего прогресса
+        reset_all_btn = QPushButton("🔄 Сбросить весь прогресс")
+        reset_all_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #e74c3c;
+                color: white;
+                border: none;
+                padding: 8px 15px;
+                font-size: 12px;
+                border-radius: 5px;
+            }
+            QPushButton:hover {
+                background-color: #c0392b;
+            }
+        """)
+        reset_all_btn.clicked.connect(self.reset_all_progress)
+        header_layout.addWidget(reset_all_btn)
+
+        layout.addLayout(header_layout)
+
+    def reset_all_progress(self):
+        """Сброс всего прогресса"""
+        from ..data.progress_manager import progress_manager
+        from PyQt6.QtWidgets import QMessageBox
+
+        reply = QMessageBox.question(
+            self,
+            'Сброс прогресса',
+            'Вы уверены, что хотите сбросить весь прогресс по всем темам?',
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+            QMessageBox.StandardButton.No
+        )
+
+        if reply == QMessageBox.StandardButton.Yes:
+            progress_manager.reset_progress()
+            # Обновляем интерфейс, если находимся в окне заданий
+            if hasattr(self, 'tasks_window') and self.tasks_window:
+                self.tasks_window.refresh_ui()
+            QMessageBox.information(self, "Прогресс сброшен", "Весь прогресс успешно сброшен!")

@@ -1,0 +1,281 @@
+{
+  "Цикл с условием": {
+    "Наибольший общий делитель": {
+      "description": "Найти наибольший общий делитель (НОД) двух натуральных чисел, используя алгоритм Евклида.",
+      "test_cases": [
+        {
+          "inputs": ["48", "18"],
+          "expected_output": "6",
+          "description": "Классический пример НОД"
+        },
+        {
+          "inputs": ["12", "8"],
+          "expected_output": "4",
+          "description": "Простой случай"
+        },
+        {
+          "inputs": ["17", "13"],
+          "expected_output": "1",
+          "description": "Взаимно простые числа"
+        },
+        {
+          "inputs": ["100", "25"],
+          "expected_output": "25",
+          "description": "Одно число делится на другое"
+        },
+        {
+          "inputs": ["7", "7"],
+          "expected_output": "7",
+          "description": "Одинаковые числа"
+        }
+      ]
+    },
+    "Цифры числа": {
+      "description": "Разложить натуральное число на отдельные цифры и вывести их в обратном порядке.",
+      "test_cases": [
+        {
+          "inputs": ["1234"],
+          "expected_output": "4\n3\n2\n1",
+          "description": "Четырехзначное число"
+        },
+        {
+          "inputs": ["5"],
+          "expected_output": "5",
+          "description": "Однозначное число"
+        },
+        {
+          "inputs": ["102"],
+          "expected_output": "2\n0\n1",
+          "description": "Число с нулем в середине"
+        },
+        {
+          "inputs": ["9876"],
+          "expected_output": "6\n7\n8\n9",
+          "description": "Убывающие цифры"
+        }
+      ]
+    },
+    "Простые множители": {
+      "description": "Разложить натуральное число на простые сомножители и вывести их.",
+      "test_cases": [
+        {
+          "inputs": ["60"],
+          "expected_output": "2\n2\n3\n5",
+          "description": "Число 60 = 2² × 3 × 5"
+        },
+        {
+          "inputs": ["12"],
+          "expected_output": "2\n2\n3",
+          "description": "Число 12 = 2² × 3"
+        },
+        {
+          "inputs": ["17"],
+          "expected_output": "17",
+          "description": "Простое число"
+        },
+        {
+          "inputs": ["8"],
+          "expected_output": "2\n2\n2",
+          "description": "Степень простого числа"
+        },
+        {
+          "inputs": ["30"],
+          "expected_output": "2\n3\n5",
+          "description": "Произведение разных простых"
+        }
+      ]
+    },
+    "Сумма цифр числа": {
+      "description": "Найти сумму всех цифр натурального числа до получения однозначного числа.",
+      "test_cases": [
+        {
+          "inputs": ["1234"],
+          "expected_output": "1",
+          "description": "1234 → 10 → 1"
+        },
+        {
+          "inputs": ["999"],
+          "expected_output": "9",
+          "description": "999 → 27 → 9"
+        },
+        {
+          "inputs": ["5"],
+          "expected_output": "5",
+          "description": "Уже однозначное"
+        },
+        {
+          "inputs": ["99"],
+          "expected_output": "9",
+          "description": "99 → 18 → 9"
+        },
+        {
+          "inputs": ["123456789"],
+          "expected_output": "9",
+          "description": "Большое число"
+        }
+      ]
+    },
+    "Число-палиндром": {
+      "description": "Проверить, является ли натуральное число палиндромом.",
+      "test_cases": [
+        {
+          "inputs": ["12321"],
+          "expected_output": "Палиндром",
+          "description": "Пятизначный палиндром"
+        },
+        {
+          "inputs": ["1234"],
+          "expected_output": "Не палиндром",
+          "description": "Обычное число"
+        },
+        {
+          "inputs": ["7"],
+          "expected_output": "Палиндром",
+          "description": "Однозначное число"
+        },
+        {
+          "inputs": ["1001"],
+          "expected_output": "Палиндром",
+          "description": "Палиндром с нулями"
+        },
+        {
+          "inputs": ["12345"],
+          "expected_output": "Не палиндром",
+          "description": "Возрастающая последовательность"
+        }
+      ]
+    }
+  },
+  "Цикл с переменной": {
+    "Простое число": {
+      "description": "Проверить, является ли введенное натуральное число простым.",
+      "test_cases": [
+        {
+          "inputs": ["17"],
+          "expected_output": "Простое",
+          "description": "Простое число"
+        },
+        {
+          "inputs": ["15"],
+          "expected_output": "Составное",
+          "description": "Составное число"
+        },
+        {
+          "inputs": ["2"],
+          "expected_output": "Простое",
+          "description": "Наименьшее простое"
+        },
+        {
+          "inputs": ["1"],
+          "expected_output": "Не простое и не составное",
+          "description": "Единица"
+        },
+        {
+          "inputs": ["97"],
+          "expected_output": "Простое",
+          "description": "Большое простое число"
+        }
+      ]
+    },
+    "Таблица умножения": {
+      "description": "Вывести таблицу умножения для числа от 1 до 10.",
+      "test_cases": [
+        {
+          "inputs": ["5"],
+          "expected_output": "5 x 1 = 5\n5 x 2 = 10\n5 x 3 = 15\n5 x 4 = 20\n5 x 5 = 25\n5 x 6 = 30\n5 x 7 = 35\n5 x 8 = 40\n5 x 9 = 45\n5 x 10 = 50",
+          "description": "Таблица умножения на 5"
+        },
+        {
+          "inputs": ["1"],
+          "expected_output": "1 x 1 = 1\n1 x 2 = 2\n1 x 3 = 3\n1 x 4 = 4\n1 x 5 = 5\n1 x 6 = 6\n1 x 7 = 7\n1 x 8 = 8\n1 x 9 = 9\n1 x 10 = 10",
+          "description": "Таблица умножения на 1"
+        },
+        {
+          "inputs": ["10"],
+          "expected_output": "10 x 1 = 10\n10 x 2 = 20\n10 x 3 = 30\n10 x 4 = 40\n10 x 5 = 50\n10 x 6 = 60\n10 x 7 = 70\n10 x 8 = 80\n10 x 9 = 90\n10 x 10 = 100",
+          "description": "Таблица умножения на 10"
+        }
+      ]
+    },
+    "Факториал": {
+      "description": "Вычислить факториал натурального числа n.",
+      "test_cases": [
+        {
+          "inputs": ["5"],
+          "expected_output": "120",
+          "description": "5! = 120"
+        },
+        {
+          "inputs": ["0"],
+          "expected_output": "1",
+          "description": "0! = 1"
+        },
+        {
+          "inputs": ["1"],
+          "expected_output": "1",
+          "description": "1! = 1"
+        },
+        {
+          "inputs": ["6"],
+          "expected_output": "720",
+          "description": "6! = 720"
+        },
+        {
+          "inputs": ["3"],
+          "expected_output": "6",
+          "description": "3! = 6"
+        }
+      ]
+    },
+    "Последовательность Фибоначчи": {
+      "description": "Вывести первые n чисел последовательности Фибоначчи.",
+      "test_cases": [
+        {
+          "inputs": ["5"],
+          "expected_output": "1\n1\n2\n3\n5",
+          "description": "Первые 5 чисел Фибоначчи"
+        },
+        {
+          "inputs": ["1"],
+          "expected_output": "1",
+          "description": "Первое число"
+        },
+        {
+          "inputs": ["8"],
+          "expected_output": "1\n1\n2\n3\n5\n8\n13\n21",
+          "description": "Первые 8 чисел"
+        },
+        {
+          "inputs": ["2"],
+          "expected_output": "1\n1",
+          "description": "Первые два числа"
+        }
+      ]
+    },
+    "Совершенное число": {
+      "description": "Найти все совершенные числа до заданного предела.",
+      "test_cases": [
+        {
+          "inputs": ["10"],
+          "expected_output": "6",
+          "description": "До 10: только 6"
+        },
+        {
+          "inputs": ["30"],
+          "expected_output": "6\n28",
+          "description": "До 30: 6 и 28"
+        },
+        {
+          "inputs": ["5"],
+          "expected_output": "",
+          "description": "До 5: нет совершенных чисел"
+        },
+        {
+          "inputs": ["500"],
+          "expected_output": "6\n28\n496",
+          "description": "До 500: три совершенных числа"
+        }
+      ]
+    }
+  }
+}

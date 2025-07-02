@@ -11,26 +11,19 @@ class SecurityManager:
     ALLOWED_MODULES = {
         # Математические модули
         'math', 'cmath', 'decimal', 'fractions', 'statistics',
-
         # Работа с данными
         'random', 'itertools', 'functools', 'operator',
         'collections', 'heapq', 'bisect',
-
         # Работа со строками и текстом
         're', 'string', 'textwrap',
-
         # Дата и время
         'datetime', 'time', 'calendar',
-
         # Работа с JSON
         'json',
-
         # Копирование объектов
         'copy',
-
         # Встроенные типы данных
         'enum', 'dataclasses',
-
         # Для продвинутых пользователей (опционально)
         # 'numpy', 'pandas', 'matplotlib.pyplot'
     }
@@ -64,10 +57,8 @@ class SecurityManager:
         """Настройка безопасного окружения выполнения"""
         # Сохраняем оригинальную функцию импорта
         self.original_import = __builtins__.__import__
-
         # Заменяем на нашу безопасную версию
         __builtins__.__import__ = self._secure_import
-
         # Очищаем опасные модули из sys.modules
         self._clean_dangerous_modules()
 
@@ -92,12 +83,9 @@ class SecurityManager:
         try:
             # Используем оригинальную функцию импорта
             module = self.original_import(name, globals, locals, fromlist, level)
-
             # Сохраняем информацию об импортированном модуле
             self.imported_modules[name] = module
-
             return module
-
         except Exception as e:
             raise ImportError(f"Ошибка импорта модуля '{name}': {str(e)}")
 
@@ -125,7 +113,6 @@ class SecurityManager:
     def _clean_dangerous_modules(self):
         """Удаление опасных модулей из sys.modules"""
         modules_to_remove = []
-
         for module_name in sys.modules:
             if any(module_name.startswith(forbidden) for forbidden in self.FORBIDDEN_MODULES):
                 modules_to_remove.append(module_name)
@@ -163,16 +150,15 @@ def create_safe_globals() -> Dict[str, Any]:
     """Создание безопасного глобального пространства имен"""
     safe_globals = {
         '__builtins__': {
-            # Разрешенные встроенные функции
+            # Разрешенные встроенные функции (включая input)
             'abs', 'all', 'any', 'bin', 'bool', 'chr', 'dict', 'divmod',
             'enumerate', 'filter', 'float', 'format', 'frozenset', 'hex',
             'int', 'isinstance', 'issubclass', 'len', 'list', 'map', 'max',
             'min', 'oct', 'ord', 'pow', 'print', 'range', 'repr', 'reversed',
             'round', 'set', 'slice', 'sorted', 'str', 'sum', 'tuple', 'type',
-            'zip'
+            'zip', 'input'  # ДОБАВЛЕНО: разрешаем input()
         }
     }
-
     return safe_globals
 
 
@@ -186,7 +172,7 @@ def get_safe_builtins():
         'int', 'isinstance', 'issubclass', 'len', 'list', 'map', 'max',
         'min', 'oct', 'ord', 'pow', 'print', 'range', 'repr', 'reversed',
         'round', 'set', 'slice', 'sorted', 'str', 'sum', 'tuple', 'type',
-        'zip'
+        'zip', 'input'  # ДОБАВЛЕНО: разрешаем input()
     }
 
     # Создаем объект-заглушку для builtins
@@ -201,4 +187,3 @@ def get_safe_builtins():
             self.__import__ = security_manager._secure_import
 
     return SafeBuiltins()
-

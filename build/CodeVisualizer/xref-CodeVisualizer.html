@@ -360,6 +360,7 @@ imported by:
  &#8226;   <a href="#PyQt6.QtPrintSupport">PyQt6.QtPrintSupport</a>
  &#8226;   <a href="#PyQt6.QtSvg">PyQt6.QtSvg</a>
  &#8226;   <a href="#PyQt6.QtWidgets">PyQt6.QtWidgets</a>
+ &#8226;   <a href="#src.gui.main_window">src.gui.main_window</a>
  &#8226;   <a href="#src.gui.menu_window">src.gui.menu_window</a>
  &#8226;   <a href="#src.gui.tasks_window">src.gui.tasks_window</a>
  &#8226;   <a href="#src.gui.visualizer_window">src.gui.visualizer_window</a>
@@ -1828,6 +1829,7 @@ imported by:
  &#8226;   <a href="#importlib.resources._adapters">importlib.resources._adapters</a>
  &#8226;   <a href="#importlib.resources._common">importlib.resources._common</a>
  &#8226;   <a href="#importlib.resources.readers">importlib.resources.readers</a>
+ &#8226;   <a href="#src.gui.visualizer_window">src.gui.visualizer_window</a>
  &#8226;   <a href="#subprocess">subprocess</a>
  &#8226;   <a href="#traceback">traceback</a>
  &#8226;   <a href="#typing">typing</a>
@@ -5929,6 +5931,7 @@ imported by:
  &#8226;   <a href="#quopri">quopri</a>
  &#8226;   <a href="#socket">socket</a>
  &#8226;   <a href="#src.executor.code_executor">src.executor.code_executor</a>
+ &#8226;   <a href="#src.gui.visualizer_window">src.gui.visualizer_window</a>
  &#8226;   <a href="#subprocess">subprocess</a>
  &#8226;   <a href="#tarfile">tarfile</a>
  &#8226;   <a href="#tempfile">tempfile</a>
@@ -6004,6 +6007,9 @@ imported by:
  &#8226;   <a href="#json.decoder">json.decoder</a>
  &#8226;   <a href="#json.encoder">json.encoder</a>
  &#8226;   <a href="#json.scanner">json.scanner</a>
+ &#8226;   <a href="#src.data.progress_manager">src.data.progress_manager</a>
+ &#8226;   <a href="#src.gui.tasks_window">src.gui.tasks_window</a>
+ &#8226;   <a href="#src.gui.visualizer_window">src.gui.visualizer_window</a>
 
   </div>
 
@@ -6383,6 +6389,9 @@ imported by:
  &#8226;   <a href="#random">random</a>
  &#8226;   <a href="#shutil">shutil</a>
  &#8226;   <a href="#socket">socket</a>
+ &#8226;   <a href="#src.data.progress_manager">src.data.progress_manager</a>
+ &#8226;   <a href="#src.gui.tasks_window">src.gui.tasks_window</a>
+ &#8226;   <a href="#src.gui.visualizer_window">src.gui.visualizer_window</a>
  &#8226;   <a href="#subprocess">subprocess</a>
  &#8226;   <a href="#tarfile">tarfile</a>
  &#8226;   <a href="#tempfile">tempfile</a>
@@ -7027,6 +7036,7 @@ imported by:
 <span class="moduletype">Package</span>  <div class="import">
 imported by:
     <a href="#src.core">src.core</a>
+ &#8226;   <a href="#src.data">src.data</a>
  &#8226;   <a href="#src.executor">src.executor</a>
  &#8226;   <a href="#src.gui">src.gui</a>
  &#8226;   <a href="#src.visualizer">src.visualizer</a>
@@ -7087,6 +7097,43 @@ imports:
   <div class="import">
 imported by:
     <a href="#src.executor.code_executor">src.executor.code_executor</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="src.data"></a>
+  <a target="code" href="-" type="text/plain"><tt>src.data</tt></a>
+<span class="moduletype">NamespacePackage</span>  <div class="import">
+imports:
+    <a href="#src">src</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#src.data.progress_manager">src.data.progress_manager</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="src.data.progress_manager"></a>
+  <a target="code" href="///D:/PyCharm_Project/CodeVisualizer1/src/data/progress_manager.py" type="text/plain"><tt>src.data.progress_manager</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#json">json</a>
+ &#8226;   <a href="#os">os</a>
+ &#8226;   <a href="#src.data">src.data</a>
+ &#8226;   <a href="#typing">typing</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#src.gui.main_window">src.gui.main_window</a>
+ &#8226;   <a href="#src.gui.tasks_window">src.gui.tasks_window</a>
+ &#8226;   <a href="#src.gui.visualizer_window">src.gui.visualizer_window</a>
 
   </div>
 
@@ -7158,7 +7205,9 @@ imported by:
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#PyQt6.QtCore">PyQt6.QtCore</a>
+ &#8226;   <a href="#PyQt6.QtGui">PyQt6.QtGui</a>
  &#8226;   <a href="#PyQt6.QtWidgets">PyQt6.QtWidgets</a>
+ &#8226;   <a href="#src.data.progress_manager">src.data.progress_manager</a>
  &#8226;   <a href="#src.gui">src.gui</a>
  &#8226;   <a href="#src.gui.menu_window">src.gui.menu_window</a>
  &#8226;   <a href="#src.gui.tasks_window">src.gui.tasks_window</a>
@@ -7200,7 +7249,11 @@ imports:
     <a href="#PyQt6.QtCore">PyQt6.QtCore</a>
  &#8226;   <a href="#PyQt6.QtGui">PyQt6.QtGui</a>
  &#8226;   <a href="#PyQt6.QtWidgets">PyQt6.QtWidgets</a>
+ &#8226;   <a href="#json">json</a>
+ &#8226;   <a href="#os">os</a>
+ &#8226;   <a href="#src.data.progress_manager">src.data.progress_manager</a>
  &#8226;   <a href="#src.gui">src.gui</a>
+ &#8226;   <a href="#traceback">traceback</a>
 
   </div>
   <div class="import">
@@ -7221,9 +7274,17 @@ imports:
  &#8226;   <a href="#PyQt6.QtGui">PyQt6.QtGui</a>
  &#8226;   <a href="#PyQt6.QtSvg">PyQt6.QtSvg</a>
  &#8226;   <a href="#PyQt6.QtWidgets">PyQt6.QtWidgets</a>
+ &#8226;   <a href="#contextlib">contextlib</a>
+ &#8226;   <a href="#io">io</a>
+ &#8226;   <a href="#json">json</a>
+ &#8226;   <a href="#os">os</a>
+ &#8226;   <a href="#src.data.progress_manager">src.data.progress_manager</a>
  &#8226;   <a href="#src.executor.code_executor">src.executor.code_executor</a>
  &#8226;   <a href="#src.gui">src.gui</a>
  &#8226;   <a href="#src.visualizer.pythontutor_widgets">src.visualizer.pythontutor_widgets</a>
+ &#8226;   <a href="#sys">sys</a>
+ &#8226;   <a href="#traceback">traceback</a>
+ &#8226;   <a href="#typing">typing</a>
 
   </div>
   <div class="import">
@@ -7551,6 +7612,7 @@ imported by:
  &#8226;   <a href="#socket">socket</a>
  &#8226;   <a href="#src.core.security">src.core.security</a>
  &#8226;   <a href="#src.executor.code_executor">src.executor.code_executor</a>
+ &#8226;   <a href="#src.gui.visualizer_window">src.gui.visualizer_window</a>
  &#8226;   <a href="#statistics">statistics</a>
  &#8226;   <a href="#subprocess">subprocess</a>
  &#8226;   <a href="#symtable">symtable</a>
@@ -7773,6 +7835,8 @@ imported by:
  &#8226;   <a href="#main.py">main.py</a>
  &#8226;   <a href="#py_compile">py_compile</a>
  &#8226;   <a href="#src.executor.code_executor">src.executor.code_executor</a>
+ &#8226;   <a href="#src.gui.tasks_window">src.gui.tasks_window</a>
+ &#8226;   <a href="#src.gui.visualizer_window">src.gui.visualizer_window</a>
  &#8226;   <a href="#threading">threading</a>
  &#8226;   <a href="#warnings">warnings</a>
 
@@ -7882,7 +7946,9 @@ imported by:
  &#8226;   <a href="#importlib.resources.abc">importlib.resources.abc</a>
  &#8226;   <a href="#src.core.code_parser">src.core.code_parser</a>
  &#8226;   <a href="#src.core.security">src.core.security</a>
+ &#8226;   <a href="#src.data.progress_manager">src.data.progress_manager</a>
  &#8226;   <a href="#src.executor.code_executor">src.executor.code_executor</a>
+ &#8226;   <a href="#src.gui.visualizer_window">src.gui.visualizer_window</a>
  &#8226;   <a href="#src.visualizer.pythontutor_widgets">src.visualizer.pythontutor_widgets</a>
 
   </div>
