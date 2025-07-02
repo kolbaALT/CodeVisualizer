@@ -30,17 +30,20 @@ jobs:
         pip install pyinstaller
 
     - name: Build executable
-      run: |
-        # Для Windows нужен .ico, для macOS — .icns, для Linux — можно без иконки
-        ICON_ARG=""
-        if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
-          ICON_ARG="--icon=assets/icon.ico"
-        elif [[ "${{ matrix.os }}" == "macos-latest" ]]; then
-          ICON_ARG="--icon=assets/icon.icns"
-        fi
-        pyinstaller --onefile --windowed $ICON_ARG --name=CodeVisualizer --add-data "src/data;src/data" src/main.py
-
       shell: bash
+      run: |
+        # Определяем разделитель и иконку для каждой ОС
+        if [[ "${{ runner.os }}" == "Windows" ]]; then
+          ADD_DATA="src/data;src/data"
+          ICON_ARG="--icon=assets/icon.ico"
+        elif [[ "${{ runner.os }}" == "macOS" ]]; then
+          ADD_DATA="src/data:src/data"
+          ICON_ARG="--icon=assets/icon.icns"
+        else
+          ADD_DATA="src/data:src/data"
+          ICON_ARG=""
+        fi
+        pyinstaller --onefile --windowed $ICON_ARG --name=CodeVisualizer --add-data "$ADD_DATA" src/main.py
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
