@@ -10,11 +10,13 @@ jobs:
   build:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -23,15 +25,25 @@ jobs:
 
     - name: Install dependencies
       run: |
+        python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install pyinstaller
 
     - name: Build executable
       run: |
-        pyinstaller --onefile --windowed --name=CodeVisualizer${{ matrix.os == 'windows-latest' && '.exe' || '' }} --add-data "src/data;src/data" src/main.py
+        # Для Windows нужен .ico, для macOS — .icns, для Linux — можно без иконки
+        ICON_ARG=""
+        if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
+          ICON_ARG="--icon=assets/icon.ico"
+        elif [[ "${{ matrix.os }}" == "macos-latest" ]]; then
+          ICON_ARG="--icon=assets/icon.icns"
+        fi
+        pyinstaller --onefile --windowed $ICON_ARG --name=CodeVisualizer --add-data "src/data;src/data" src/main.py
+
+      shell: bash
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: CodeVisualizer-${{ matrix.os }}
         path: dist/
